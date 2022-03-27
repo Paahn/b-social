@@ -1,4 +1,4 @@
-namespace Webapi.Models
+namespace WebApi.Models
 {
     public class AppUser
     {
