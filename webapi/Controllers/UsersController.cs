@@ -1,6 +1,7 @@
 using WebApi.Data;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApi.Controllers
 {
@@ -14,12 +15,18 @@ namespace WebApi.Controllers
             _context = context;
         }
 
+        // api/users
         [HttpGet]
-        public ActionResult<IEnumerable<AppUser>> GetUsers()
+        public async Task <ActionResult<IEnumerable<AppUser>>> GetUsers()
         {
-            var users = _context.Users.ToList();
+            return await _context.Users.ToListAsync();
+        }
 
-            return users;
+        // api/users/3
+        [HttpGet("{id}")]
+        public async Task <ActionResult<AppUser>> GetUser(int id)
+        {
+            return await _context.Users.FindAsync(id);
         }
     }
 }
