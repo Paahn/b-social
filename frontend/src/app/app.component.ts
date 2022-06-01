@@ -6,8 +6,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'b-social';
+  public title: string = 'b-social';
   public constructor(private http: HttpClient) {}
   }
 }
