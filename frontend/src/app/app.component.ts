@@ -10,11 +10,19 @@ import { User } from './user.model';
 
 export class AppComponent implements OnInit {
   public title: string = 'b-social';
-  public users: User;
+  public users: any;
 
   public constructor(private http: HttpClient) {}
 
+  public getUsers() {
+    this.http.get('https://localhost:5001/api/users').subscribe(response => {
+      this.users = response;
+    }, error => {
+      console.log(error);
+    });
+  }
+
   public ngOnInit(): void {
-      this.http.get('https://localhost:5001/api/users').subscribe();
+    this.getUsers();
   }
 }
