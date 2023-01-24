@@ -5,9 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebApi.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class UsersController : ControllerBase
+    public class UsersController : ApiControllerBase
     {
         private readonly WebApiDbContext _context;
         public UsersController(WebApiDbContext context)
