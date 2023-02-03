@@ -1,6 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApi.Data;
 using WebApi.Models;
 
@@ -32,5 +33,10 @@ namespace WebApi.Controllers
 
             return user;
         }
+    private async Task<bool> UserExists(string username)
+    {
+        return await _context.Users.AnyAsync(u => u.UserName == username);
     }
+    }
+
 }
