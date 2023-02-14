@@ -38,10 +38,11 @@ namespace WebApi.Controllers
 
             return user;
         }
-    private async Task<bool> UserExists(string username)
-    {
-        return await _context.Users.AnyAsync(u => u.UserName == username.ToLower());
-    }
+        
+        private async Task<bool> UserExists(string username)
+        {
+            return await _context.Users.AnyAsync(u => u.UserName == username.ToLower());
+        }
     }
 
 }
