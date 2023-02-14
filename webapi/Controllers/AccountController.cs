@@ -28,7 +28,7 @@ namespace WebApi.Controllers
 
             var user = new AppUser
             {
-                UserName = registerDto.Username,
+                UserName = registerDto.Username.ToLower(),
                 PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
                 PasswordSalt = hmac.Key
             };
@@ -40,7 +40,7 @@ namespace WebApi.Controllers
         }
     private async Task<bool> UserExists(string username)
     {
-        return await _context.Users.AnyAsync(u => u.UserName == username);
+        return await _context.Users.AnyAsync(u => u.UserName == username.ToLower());
     }
     }
 
