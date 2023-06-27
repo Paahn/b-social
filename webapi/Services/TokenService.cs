@@ -17,7 +17,10 @@ namespace WebApi.Services
 
         public string CreateToken(AppUser user)
         {
-            throw new NotImplementedException();
+            var claims = new List<Claim>
+            {
+                new Claim(JwtRegisteredClaimNames.NameId, user.UserName)
+            };
         }
     }
 }
