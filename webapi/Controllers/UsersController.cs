@@ -2,9 +2,11 @@ using WebApi.Data;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi.Controllers
 {
+    [Authorize]
     public class UsersController : ApiControllerBase
     {
         private readonly WebApiDbContext _context;
@@ -14,6 +16,7 @@ namespace WebApi.Controllers
         }
 
         // api/users
+        [AllowAnonymous]
         [HttpGet]
         public async Task <ActionResult<IEnumerable<AppUser>>> GetUsers()
         {
